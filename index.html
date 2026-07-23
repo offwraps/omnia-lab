@@ -161,10 +161,11 @@
   }
   .eyebrow::before{content:'';width:28px;height:1px;background:var(--blue);box-shadow:0 0 8px var(--blue);}
   h2.section-title{
-    font-family:var(--font-display); font-weight:700; font-size:clamp(28px,4vw,46px);
-    letter-spacing:1px; line-height:1.15; max-width:820px;
-    background:linear-gradient(120deg, var(--holo) 40%, var(--blue) 100%);
+    font-family:var(--font-display); font-weight:700; font-size:clamp(32px,5vw,54px);
+    letter-spacing:0.5px; line-height:1.12; max-width:860px;
+    background:linear-gradient(120deg, var(--holo) 35%, var(--blue) 100%);
     -webkit-background-clip:text; background-clip:text; color:transparent;
+    filter:drop-shadow(0 0 18px rgba(46,143,255,0.35));
   }
   .lede{max-width:640px;color:rgba(232,246,255,0.72);font-size:19px;margin-top:18px;}
 
@@ -237,13 +238,6 @@
   .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 6px 32px rgba(46,143,255,0.75);}
   .btn-outline{ border-color:var(--cyan); color:var(--holo); background:rgba(90,200,255,0.06);}
   .btn-outline:hover{ background:rgba(90,200,255,0.18); box-shadow:0 0 24px rgba(90,200,255,0.5); transform:translateY(-2px);}
-  .scroll-hint{
-    position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
-    font-family:var(--font-mono); font-size:11px; color:rgba(232,246,255,0.4); letter-spacing:2px;
-    display:flex; flex-direction:column; align-items:center; gap:6px;
-  }
-  .scroll-hint span{width:1px; height:34px; background:linear-gradient(var(--blue), transparent); animation:drop 1.8s ease-in-out infinite;}
-  @keyframes drop{ 0%{opacity:0; transform:scaleY(0.3);} 40%{opacity:1;} 100%{opacity:0; transform:scaleY(1);} }
 
   /* ---------- glass panel util ---------- */
   .glass{
@@ -469,7 +463,6 @@
       <a href="#contacto" class="btn btn-primary" id="cta-solicitar-asesoria">Solicitar asesoría</a>
       <a href="https://wa.me/523328014886?text=Hola%2C%20quiero%20conocer%20c%C3%B3mo%20OMNIA%20LAB%20puede%20ayudarme%20con%20mi%20proyecto." target="_blank" rel="noopener" class="btn btn-outline">Contactar por WhatsApp</a>
     </div>
-    <div class="scroll-hint"><span></span>SCROLL</div>
   </section>
 
   <!-- FILOSOFIA -->
@@ -842,8 +835,8 @@
         <div class="contact-channel glass">
           <div class="ic">@</div>
           <div>
-            <strong>Dominio</strong><br>
-            omnia-lab.net
+            <strong>Correo electrónico</strong><br>
+            <a href="mailto:contacto@omnia-lab.net">contacto@omnia-lab.net</a>
           </div>
         </div>
       </div>
