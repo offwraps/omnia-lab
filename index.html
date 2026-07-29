@@ -49,7 +49,15 @@
       "Agentes de IA"
     ]
   }
-  </script>
+  
+    // V8: evita que el navegador restaure una posición horizontal fuera de pantalla
+    window.addEventListener("pageshow", () => {
+      if (window.scrollX !== 0) window.scrollTo(0, window.scrollY);
+    });
+
+    document.documentElement.style.setProperty("--real-vw", `${window.innerWidth}px`);
+
+</script>
 
   <style>
     :root{
@@ -1234,7 +1242,434 @@
       }
     }
 
-  </style>
+  
+    /* V8: blindaje de viewport móvil y anti-desbordamiento */
+    html{
+      width:100%;
+      max-width:100%;
+      overflow-x:clip;
+      scroll-padding-top:72px;
+    }
+
+    body{
+      width:100%;
+      max-width:100%;
+      overflow-x:clip !important;
+    }
+
+    *,*::before,*::after{
+      min-width:0;
+    }
+
+    img,video,svg,canvas{
+      max-width:100%;
+    }
+
+    main,section,.wrap,.hero,.hero-grid,.hero-copy,
+    .diagnostic-card,.network,.explorer,.cta-panel{
+      max-width:100% !important;
+    }
+
+    .hero-copy,
+    .section-head,
+    .step > div,
+    .network > div,
+    .cta-panel > div{
+      min-width:0 !important;
+    }
+
+    h1,h2,h3,p,.lead,.eyebrow,.hero-brandlock strong,.hero-brandlock small{
+      overflow-wrap:anywhere;
+    }
+
+    /* En móvil táctil, incluso si el navegador está intentando usar viewport "desktop" */
+    @media (hover:none) and (pointer:coarse) and (max-width:1200px){
+      :root{
+        --max:100%;
+      }
+
+      .wrap{
+        width:calc(100% - 28px) !important;
+        max-width:100% !important;
+        margin-left:auto !important;
+        margin-right:auto !important;
+      }
+
+      nav{
+        width:100% !important;
+        max-width:100% !important;
+        overflow:hidden !important;
+      }
+
+      .nav-inner{
+        width:100% !important;
+        min-height:60px !important;
+        gap:8px !important;
+      }
+
+      .nav-links{
+        display:none !important;
+      }
+
+      .brand{
+        flex:0 1 auto !important;
+        min-width:0 !important;
+      }
+
+      .brand span{
+        font-size:.78rem !important;
+      }
+
+      .brand-logo{
+        width:32px !important;
+        height:32px !important;
+        flex:0 0 32px !important;
+      }
+
+      .nav-cta{
+        margin-left:auto !important;
+        flex:0 0 auto !important;
+        padding:9px 12px !important;
+        font-size:.76rem !important;
+        white-space:nowrap !important;
+      }
+
+      .hero{
+        width:100% !important;
+        padding:84px 0 54px !important;
+      }
+
+      .hero-grid{
+        display:grid !important;
+        grid-template-columns:minmax(0,1fr) !important;
+        width:100% !important;
+        gap:24px !important;
+      }
+
+      .hero-copy{
+        width:100% !important;
+        max-width:100% !important;
+        transform:none !important;
+      }
+
+      .hero-brandlock{
+        width:100% !important;
+        max-width:100% !important;
+        box-sizing:border-box !important;
+      }
+
+      .eyebrow{
+        max-width:100% !important;
+        white-space:normal !important;
+        font-size:.63rem !important;
+        letter-spacing:.11em !important;
+      }
+
+      h1{
+        width:100% !important;
+        max-width:100% !important;
+        font-size:clamp(2.25rem,10vw,3.6rem) !important;
+        line-height:1.02 !important;
+        letter-spacing:-.045em !important;
+      }
+
+      .lead{
+        width:100% !important;
+        max-width:100% !important;
+        font-size:1rem !important;
+        line-height:1.5 !important;
+      }
+
+      .hero-actions{
+        width:100% !important;
+        display:grid !important;
+        grid-template-columns:1fr !important;
+      }
+
+      .hero-actions .btn{
+        width:100% !important;
+        max-width:100% !important;
+        white-space:normal !important;
+        text-align:center !important;
+      }
+
+      .hero-foot{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        width:100% !important;
+      }
+
+      .diagnostic-card{
+        width:100% !important;
+        margin:0 !important;
+      }
+
+      .section-head.row,
+      .diagnostic-grid,
+      .network,
+      .cta-panel{
+        display:grid !important;
+        grid-template-columns:minmax(0,1fr) !important;
+      }
+
+      .problem-grid,
+      .seo-services,
+      .capabilities{
+        grid-template-columns:1fr !important;
+      }
+
+      .visual-strip{
+        grid-template-columns:1fr !important;
+      }
+
+      .division-gallery{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+      }
+
+      .division-shot,
+      .division-shot.wide{
+        grid-column:1/-1 !important;
+      }
+
+      .explorer{
+        width:100% !important;
+        overflow:hidden !important;
+      }
+
+      .chips{
+        width:100% !important;
+      }
+
+      .chip{
+        max-width:100% !important;
+        white-space:normal !important;
+      }
+
+      .solution-flow{
+        max-width:100% !important;
+      }
+
+      .network-visual{
+        width:100% !important;
+        overflow:hidden !important;
+      }
+
+      .cta-panel{
+        width:100% !important;
+      }
+
+      .form,
+      .form input,
+      .form select,
+      .form textarea,
+      .form button{
+        width:100% !important;
+        max-width:100% !important;
+      }
+    }
+
+    /* Teléfonos estrechos */
+    @media(max-width:700px){
+      .wrap{
+        width:calc(100% - 28px) !important;
+      }
+
+      .hero::after{
+        width:430px !important;
+        height:430px !important;
+        right:-250px !important;
+        top:120px !important;
+      }
+
+      .hero::before{
+        left:-45% !important;
+        right:-45% !important;
+      }
+
+      .nav-inner{
+        justify-content:space-between !important;
+      }
+
+      .nav-cta{
+        max-width:58vw !important;
+        overflow:hidden !important;
+        text-overflow:ellipsis !important;
+      }
+
+      h1{
+        font-size:clamp(2.15rem,11vw,3.3rem) !important;
+      }
+    }
+
+    @media(max-width:420px){
+      .brand span{
+        display:none !important;
+      }
+
+      .nav-cta{
+        max-width:72vw !important;
+        font-size:.72rem !important;
+      }
+
+      .hero-brandlock{
+        padding:7px 9px !important;
+      }
+
+      .hero-brandlock img{
+        width:38px !important;
+        height:38px !important;
+      }
+
+      .hero-brandlock strong{
+        font-size:.67rem !important;
+      }
+
+      .hero-brandlock small{
+        font-size:.54rem !important;
+      }
+    }
+
+
+    /* V9 FLOW: navegación invisible, experiencia continua */
+    body{
+      scroll-behavior:smooth;
+    }
+
+    .hero{
+      padding-top:clamp(34px,5vw,72px) !important;
+      min-height:auto !important;
+    }
+
+    .hero-grid{
+      align-items:center !important;
+    }
+
+    .hero-copy{
+      gap:clamp(20px,3vw,28px) !important;
+    }
+
+    .hero-brandlock{
+      margin-bottom:2px;
+    }
+
+    .hero-actions{
+      margin-top:4px;
+    }
+
+    .hero-actions .btn{
+      min-height:50px;
+    }
+
+    section{
+      scroll-margin-top:20px;
+    }
+
+    .statement{
+      margin:0;
+    }
+
+    .section-head{
+      max-width:100%;
+    }
+
+    .problem,
+    .cap,
+    .service,
+    .step,
+    .visual-card,
+    .division-shot{
+      transition:
+        transform .28s ease,
+        border-color .28s ease,
+        background .28s ease,
+        box-shadow .28s ease;
+    }
+
+    .problem:hover,
+    .cap:hover,
+    .service:hover,
+    .step:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 55px rgba(0,0,0,.18);
+    }
+
+    .flow-divider{
+      width:min(100% - 28px,1180px);
+      height:1px;
+      margin:0 auto;
+      background:linear-gradient(90deg,transparent,rgba(112,255,221,.22),rgba(107,183,255,.18),transparent);
+    }
+
+    .section-kicker{
+      display:flex;
+      justify-content:center;
+      margin-top:-34px;
+      margin-bottom:38px;
+      pointer-events:none;
+    }
+
+    .section-kicker span{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(8,11,16,.72);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      color:var(--muted);
+      font-size:.72rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .section-kicker i{
+      width:6px;height:6px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 12px var(--accent);
+    }
+
+    .wa-float{
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    @media(max-width:620px){
+      .hero{
+        padding-top:24px !important;
+      }
+
+      .hero-brandlock{
+        width:auto !important;
+        max-width:100% !important;
+      }
+
+      .hero-actions{
+        gap:9px !important;
+      }
+
+      .hero-actions .btn{
+        min-height:48px !important;
+      }
+
+      .section-kicker{
+        margin-top:-24px;
+        margin-bottom:24px;
+      }
+
+      section{
+        padding-top:52px !important;
+        padding-bottom:52px !important;
+      }
+
+      .statement{
+        padding:44px 0 !important;
+      }
+    }
+
+</style>
 
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/omnia-logo.png" type="image/png">
@@ -1251,23 +1686,7 @@
     <span class="glow glow-c"></span>
   </div>
   <div class="mouse-halo" id="mouseHalo" aria-hidden="true"></div>
-  <nav>
-    <div class="wrap nav-inner">
-      <a class="brand" href="#inicio" aria-label="OMNIA LAB inicio">
-        <img class="brand-logo" src="assets/omnia-logo.png" alt="Logo OMNIA LAB">
-        <span>OMNIA LAB</span>
-      </a>
-      <div class="nav-links">
-        <a href="#diagnostico">Diagnóstico</a>
-        <a href="#posibilidades">Posibilidades</a>
-        <a href="#ecosistema">Ecosistema</a>
-        <a href="#servicios">Servicios</a>
-      </div>
-      <a class="nav-cta wa-action" href="#" data-wa="Hola OMNIA LAB. Quiero explorar qué oportunidades tecnológicas puede tener mi empresa y conocer el Diagnóstico Tecnológico OMNIA.">Explorar mi empresa ↗</a>
-    </div>
-  </nav>
-
-  <main>
+<main>
     <section class="hero" id="inicio">
       <div class="wrap hero-grid">
         <div class="hero-copy reveal">
@@ -1283,7 +1702,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary wa-action" href="#" data-wa="Hola OMNIA LAB. Quiero solicitar información sobre el Diagnóstico Tecnológico OMNIA para mi empresa o proyecto.">Solicitar diagnóstico tecnológico ↗</a>
-            <a class="btn btn-secondary" href="#posibilidades">¿Qué podría mejorar? ↓</a>
+            <a class="btn btn-secondary" href="#problemas">Ver oportunidades ↓</a>
           </div>
           <div class="hero-foot">
             <span><i class="dot"></i> Guadalajara · Zapopan · Jalisco</span>
@@ -1323,7 +1742,8 @@
       </div>
     </section>
 
-    <section id="problemas">
+    <div class="flow-divider"></div>
+<section id="problemas">
       <div class="wrap">
         <div class="section-head row reveal">
           <div>
@@ -1379,7 +1799,9 @@
       </div>
     </div>
 
-    <section id="diagnostico">
+    <div class="flow-divider"></div>
+<div class="section-kicker"><span><i></i> del problema a la estrategia</span></div>
+<section id="diagnostico">
       <div class="wrap diagnostic-grid">
         <div class="sticky reveal">
           <span class="eyebrow">Producto principal</span>
@@ -1437,7 +1859,8 @@
       </div>
     </section>
 
-    <section id="posibilidades">
+    <div class="flow-divider"></div>
+<section id="posibilidades">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="eyebrow">Explora posibilidades</span>
@@ -1467,7 +1890,9 @@
       </div>
     </section>
 
-    <section id="ecosistema">
+    <div class="flow-divider"></div>
+<div class="section-kicker"><span><i></i> de la estrategia a la ejecución</span></div>
+<section id="ecosistema">
       <div class="wrap">
         <div class="section-head row reveal">
           <div>
@@ -1555,7 +1980,8 @@
       </div>
     </section>
 
-    <section id="servicios">
+    <div class="flow-divider"></div>
+<section id="servicios">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="eyebrow">Soluciones que las empresas ya buscan</span>
@@ -1637,7 +2063,9 @@
       </div>
     </section>
 
-    <section id="contacto">
+    <div class="flow-divider"></div>
+<div class="section-kicker"><span><i></i> ahora sí, hablemos de tu caso</span></div>
+<section id="contacto">
       <div class="wrap">
         <div class="cta-panel reveal">
           <div>
