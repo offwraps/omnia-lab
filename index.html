@@ -661,6 +661,54 @@
       letter-spacing:.02em;
     }
 
+  
+    /* V6: logos circulares OMNIA */
+    .brand-logo{
+      width:42px !important;
+      height:42px !important;
+      border-radius:50% !important;
+      object-fit:cover !important;
+      object-position:center !important;
+      padding:0 !important;
+      background:#05080d;
+      border:1px solid rgba(112,255,221,.32);
+      box-shadow:
+        0 0 0 3px rgba(112,255,221,.035),
+        0 0 20px rgba(112,255,221,.24);
+      overflow:hidden;
+    }
+
+    .hero-brandlock img{
+      width:54px !important;
+      height:54px !important;
+      border-radius:50% !important;
+      object-fit:cover !important;
+      object-position:center !important;
+      padding:0 !important;
+      background:#05080d;
+      border:1px solid rgba(112,255,221,.36);
+      box-shadow:
+        0 0 0 4px rgba(112,255,221,.04),
+        0 0 26px rgba(112,255,221,.24);
+      overflow:hidden;
+    }
+
+    .brand-logo:hover,
+    .hero-brandlock img:hover{
+      transform:scale(1.03);
+    }
+
+    @media(max-width:620px){
+      .brand-logo{
+        width:38px !important;
+        height:38px !important;
+      }
+      .hero-brandlock img{
+        width:48px !important;
+        height:48px !important;
+      }
+    }
+
   </style>
 
   <link rel="manifest" href="manifest.webmanifest">
